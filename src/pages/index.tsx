@@ -1,8 +1,7 @@
 "use client";
 import SearchBox from "@/components/atoms/SearchBox";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
+
+import React from "react";
 
 function Page() {
   return (
