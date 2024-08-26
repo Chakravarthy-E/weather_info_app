@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/weather/:locality_id",
+      "destination": "/weather/[locality_id]"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
