@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
 import { searchLocations } from "@/lib/redux/slices/locationSlice";
@@ -8,6 +8,7 @@ import { Location } from "../../../@types/location.type";
 import { useRouter } from "next/router";
 import { Title } from "../ui/Title";
 import { Mic, Scan, Search } from "lucide-react";
+import debounce from "lodash.debounce";
 
 function SearchBox() {
   const [query, setQuery] = useState("");
@@ -19,13 +20,26 @@ function SearchBox() {
     (state: RootState) => state.locations as Location[]
   );
 
+  // Debounced function to handle search
+  const debouncedSearch = useCallback(
+    debounce(async (searchQuery: string) => {
+      if (searchQuery) {
+        setIsLoading(true);
+        await dispatch(searchLocations(searchQuery));
+        setIsLoading(false);
+      }
+    }, 500), // 500ms debounce delay
+    [dispatch]
+  );
+
+  // Trigger debounced search on query change
   useEffect(() => {
     if (query) {
-      setIsLoading(true);
-      dispatch(searchLocations(query));
+      debouncedSearch(query);
+    } else {
       setIsLoading(false);
     }
-  }, [query, dispatch]);
+  }, [query, debouncedSearch]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);

@@ -64,45 +64,45 @@ export default function Location() {
   } = data.locality_weather_data;
 
   return (
-    <div className="min-h-screen flex flex-col font-outfit mx-auto py-10 px-6 space-y-6 bg-gradient-to-br from-green-200 to-blue-300">
-      {/* Greeting and Time */}
-      <div className="text-center">
-        <p className="text-3xl font-semibold">{greeting}</p>
-        <p className="text-2xl">{currentTime}</p>
+    <div className="min-h-screen flex flex-col items-center justify-center font-outfit mx-auto py-10 px-6 space-y-12 bg-gradient-to-br from-blue-200 to-indigo-400 text-white">
+      {/* Greeting Section */}
+      <div className="text-center space-y-2 animate-fadeIn">
+        <p className="text-4xl font-bold">{greeting}</p>
+        <p className="text-3xl">{currentTime}</p>
       </div>
 
-      {/* Temperature */}
-      <div className="text-center">
-        <p className="text-8xl font-semibold">
-          {temperature}°<span>C</span>
+      {/* Temperature Display */}
+      <div className="text-center animate-fadeIn">
+        <p className="text-7xl sm:text-8xl font-bold">
+          {temperature}°<span className="text-4xl">C</span>
         </p>
       </div>
 
-      {/* Weather Information Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 items-center justify-center">
-        <div className="flex items-center flex-col space-y-1 text-center">
+      {/* Weather Details Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-center animate-fadeIn">
+        <div className="flex flex-col items-center space-y-2 text-center border border-white bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-filter backdrop-blur-md">
           <Droplets size={50} />
-          <p>Humidity</p>
+          <p className="text-lg font-semibold">Humidity</p>
           <p className="text-3xl font-bold">{humidity}%</p>
         </div>
-        <div className="flex items-center flex-col space-y-1 text-center">
+        <div className="flex flex-col items-center space-y-2 text-center border border-white bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-filter backdrop-blur-md">
           <CloudRainWind size={50} />
-          <p>Rain Accumulation</p>
+          <p className="text-lg font-semibold">Rain Accumulation</p>
           <p className="text-3xl font-bold">{rain_accumulation} mm</p>
         </div>
-        <div className="flex items-center flex-col space-y-1 text-center">
+        <div className="flex flex-col items-center space-y-2 text-center border border-white bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-filter backdrop-blur-md">
           <CloudHail size={50} />
-          <p>Rain Intensity</p>
+          <p className="text-lg font-semibold">Rain Intensity</p>
           <p className="text-3xl font-bold">{rain_intensity} mm/h</p>
         </div>
-        <div className="flex items-center flex-col space-y-1 text-center">
+        <div className="flex flex-col items-center space-y-2 text-center border border-white bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-filter backdrop-blur-md">
           <Wind size={50} />
-          <p>Wind Speed</p>
+          <p className="text-lg font-semibold">Wind Speed</p>
           <p className="text-3xl font-bold">{wind_speed} m/s</p>
         </div>
-        <div className="flex items-center flex-col space-y-1 text-center">
+        <div className="flex flex-col items-center space-y-2 text-center border border-white bg-white bg-opacity-20 rounded-lg p-6 shadow-lg backdrop-filter backdrop-blur-md">
           <Waves size={50} />
-          <p>Wind Direction</p>
+          <p className="text-lg font-semibold">Wind Direction</p>
           <p className="text-3xl font-bold">{wind_direction}°</p>
         </div>
       </div>
